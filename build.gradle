@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.ernigee'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.google.guava:guava:29.0-jre'
+    testImplementation 'junit:junit:4.13'
+
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.24.0'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task helloJayJay(){
+    description("Menjalankan Hello JayJay Custom Task")
+
+    doLast {
+        println "Hello Jay-Jay"
+    }
+}
+
+task greetingTask() {
+    doLast {
+        String nama = project.hasProperty('nama') ? project.property('nama') : 'Gradle User'
+        println "Hello, $nama! Welcome to Gradle World!"
+    }
+}
